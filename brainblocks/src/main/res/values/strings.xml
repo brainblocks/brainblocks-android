@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BrainBlocks</string>
+    <string name="session_url">https://brainblocks.io/api/session/</string>
+    <string name="conversion_url">https://brainblocks.io/api/exchange/</string>
+</resources>

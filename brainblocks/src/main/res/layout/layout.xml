@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/payment_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pay 0.001 XRB"
+            android:textSize="15dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/payment_amount"
+            android:layout_alignBottom="@id/payment_amount"/>
+
+
+        <ImageView
+            android:id="@+id/rai_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/divider"
+            android:src="@mipmap/raiblock_logo_foreground"
+            android:layout_marginLeft="10dp"
+            android:layout_alignBottom="@id/payment_amount"
+            android:scaleType="centerCrop"/>
+
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/horizontal_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/dialog_title"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:id="@+id/qr_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horizontal_divider"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/payment_destination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/qr_code"
+        android:layout_centerHorizontal="true"
+        android:text="xrb_aewfswef4e54354aer543as54f354we3a4553e4f"
+        android:textSize="12sp"
+        android:gravity="center_horizontal"
+        android:maxWidth="250dp"/>
+
+    <ProgressBar
+        android:id="@+id/timer_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/payment_destination"
+        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+        android:layout_centerHorizontal="true"
+        android:max="120"
+        android:progress="0"/>
+
+    <TextView
+        android:id="@+id/timer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timer_progress"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text="120 seconds remaining"
+        android:layout_marginBottom="10dp"/>
+
+</RelativeLayout>

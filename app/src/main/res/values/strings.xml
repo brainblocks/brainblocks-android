@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">android-brainblocks</string>
+    <string name="xrb_destination_address">xrb_3anuobu4qk7nrbouax4jc4mx77ye3eun541kn85ceeho415zs4j7ty1uzsfp</string>
+    <string name="brainblock_api_url">https://brainblocks.io/api/session</string>
+
+
+</resources>
