@@ -2,7 +2,7 @@
 
 Android SDK for integrating [BrainBlocks](http://BrainBlocks.io) into a mobile app
 
-##Installation
+## Installation
 
 To use the SDK in your application, follow the instructions [here](https://jitpack.io/#brainblocks/brainblocks-android/).
 
