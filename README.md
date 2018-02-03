@@ -8,9 +8,9 @@ To use the SDK in your application, follow the instructions [here](https://jitpa
 
 Be sure to use the latest version. Snapshots may not be stable.
 
-##Usage
+## Usage
 
-###Payment Functionality
+### Payment Functionality
 
 ```Java
 
@@ -26,12 +26,12 @@ bb.pay_with_XRB_start(amount);
 
 This will automatically generate all the dialogs necessary for directing your client through the payment process.
 
-###Currency to XRB conversion
+### Currency to XRB conversion
 
 ```Java
 
-// first argument is currency, second is amount you wish to convert to XRB, and 3rd is a callback that returns the result
-// when the response arrives
+// first argument is currency, second is amount you wish to convert to XRB, 
+// the 3rd is a callback that returns the result when the response arrives
 bb.convertToXRB("cad", "100", new VolleyCallback() {
             @Override
             public void onSuccess(String result) {
