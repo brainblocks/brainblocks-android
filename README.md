@@ -17,7 +17,7 @@ Be sure to use the latest version. Snapshots may not be stable.
 Brainblock bb = Brainblock.getBrainBlock(this, "<Your XRB Payment Address Here>");
 
 // payment rai amount. rai = 1xrb/1000000
-double amount = 1000;
+int amount = 1000;
 
 bb.pay_with_XRB_start(amount);
 

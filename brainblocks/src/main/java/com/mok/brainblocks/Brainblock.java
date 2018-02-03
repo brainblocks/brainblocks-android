@@ -69,7 +69,7 @@ public class Brainblock {
     }
 
 
-    public void pay_with_XRB_start(double amount){
+    public void pay_with_XRB_start(int amount){
         final String strAmount = String.valueOf(amount);
 
         StringRequest startSession = new StringRequest(Request.Method.POST, url,

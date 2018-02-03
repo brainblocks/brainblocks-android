@@ -21,6 +21,8 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.airbnb.lottie.SimpleColorFilter;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -187,6 +189,8 @@ public class DialogHelper {
     }
 
     public void updateDialogCancelled(){
+        clearRequestQueue();
+
         dialog.dismiss();
 
         view = inflater.inflate(R.layout.post_payment_dialog_layout, null);
@@ -223,5 +227,15 @@ public class DialogHelper {
         negativeButton.setLayoutParams(negativeButtonLL);
 
         animationView.playAnimation();
+    }
+
+    public void clearRequestQueue(){
+        Brainblock bb = Brainblock.getBrainBlock(context, "");
+        bb.queue.cancelAll(new RequestQueue.RequestFilter() {
+            @Override
+            public boolean apply(Request<?> request) {
+                return true;
+            }
+        });
     }
 }
