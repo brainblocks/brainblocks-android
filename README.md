@@ -43,6 +43,7 @@ bb.convertToXRB("cad", "100", new VolleyCallback() {
 
 Supported currencies are: aud, brl, cad, chf, clp, cny, czk, dkk, eur, gbp, hkd, huf, idr, ils, inr, jpy, krw, mxn, myr, nok, nzd, php, pkr, pln, rub, sek, sgd, thb, try, usd, twd, zar.
 
+## Donate
 
 Donate to me (contributor): xrb_3anuobu4qk7nrbouax4jc4mx77ye3eun541kn85ceeho415zs4j7ty1uzsfp
 
