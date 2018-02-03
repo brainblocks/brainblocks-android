@@ -26,6 +26,8 @@ bb.pay_with_XRB_start(amount);
 
 This will automatically generate all the dialogs necessary for directing your client through the payment process.
 
+Here is what the [flow](https://imgur.com/a/OoETq) looks like. 
+
 ### Currency to XRB conversion
 
 ```Java
