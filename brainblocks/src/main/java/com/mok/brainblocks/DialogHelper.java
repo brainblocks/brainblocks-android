@@ -8,11 +8,9 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,6 +26,8 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+
+import java.text.DecimalFormat;
 
 /**
  * Created by Alexander on 1/31/2018.
@@ -70,10 +70,12 @@ public class DialogHelper {
         }
 
         sb = new StringBuilder();
-        double XRBAmount = Double.parseDouble(amount) / 1000000;
+        DecimalFormat formatter = new DecimalFormat("0");
+        formatter.setMaximumFractionDigits(8);
+        double NanoAmount = Double.parseDouble(amount) / 1000000;
 
         TextView paymentAmountText = view.findViewById(R.id.payment_amount);
-        paymentAmountText.setText(sb.append("Pay ").append(XRBAmount).append(" XRB").toString());
+        paymentAmountText.setText(sb.append("Pay ").append(formatter.format(NanoAmount)).append(" Nano").toString());
 
         TextView addressText = view.findViewById(R.id.payment_destination);
         addressText.setText(address);

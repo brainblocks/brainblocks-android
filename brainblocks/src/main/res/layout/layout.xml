@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pay 0.001 XRB"
-            android:textSize="15dp"
+            android:textSize="18dp"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"/>
 
@@ -33,10 +33,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/divider"
-            android:src="@mipmap/raiblock_logo_foreground"
+            android:src="@drawable/nano_logo"
             android:layout_marginLeft="10dp"
             android:layout_alignBottom="@id/payment_amount"
-            android:scaleType="centerCrop"/>
+            android:layout_marginBottom="7dp"
+            android:scaleType="centerCrop" />
 
 
     </RelativeLayout>

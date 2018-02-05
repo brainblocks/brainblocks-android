@@ -70,6 +70,10 @@ public class Brainblock {
 
 
     public void pay_with_XRB_start(int amount){
+        if(amount < 1){
+            throw new IllegalArgumentException("Amount must be greater than 1 rai.");
+        }
+
         final String strAmount = String.valueOf(amount);
 
         StringRequest startSession = new StringRequest(Request.Method.POST, url,
