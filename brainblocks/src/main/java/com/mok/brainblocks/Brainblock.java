@@ -1,15 +1,9 @@
 package com.mok.brainblocks;
 
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Handler;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -18,11 +12,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,20 +38,22 @@ public class Brainblock {
     AlertDialog dialog;
     DialogHelper dialogHelper;
     StringBuilder sb;
+    FragmentManager fm;
 
 
-    private Brainblock(Context context, String destination){
+    private Brainblock(Context context, String destination, FragmentManager fm){
         this.context = context;
         queue = Volley.newRequestQueue(context);
         status = "";
         token = "";
         url = context.getString(R.string.session_url);
         yourDestination = destination;
+        this.fm = fm;
     }
 
-    public static Brainblock getBrainBlock(Context context, String destination){
+    public static Brainblock getBrainBlock(Context context, String destination, FragmentManager fm){
         if(singleton == null){
-            singleton = new Brainblock(context, destination);
+            singleton = new Brainblock(context, destination, fm);
         }
 
         return singleton;
@@ -115,14 +106,13 @@ public class Brainblock {
     }
 
     public void completeTransaction(String amount, String address){
-        dialogHelper = new DialogHelper(context);
+        dialogHelper = DialogHelper.getDialogHelper(fm, context);
         dialogHelper.createDialog(address, amount);
 
         check_XRB_transfer();
     }
 
     public void check_XRB_transfer(){
-//        String checkTransferUrl = url + "/" + token + "/transfer";
         sb = new StringBuilder();
         String checkTransferUrl = sb.append(url).append(token).append("/transfer").toString();
 
@@ -167,7 +157,6 @@ public class Brainblock {
 
     public void complete_XRB_transfer(){
         sb = new StringBuilder();
-//        String verifyUrl = url + "/" + token + "/" + "verify";
         String verifyUrl = sb.append(url).append(token).append("/verify").toString();
 
         StringRequest verifyTransfer = new StringRequest(Request.Method.GET, verifyUrl,
@@ -202,5 +191,13 @@ public class Brainblock {
                 return true;
             }
         });
+    }
+
+    public void setFragmentManager(FragmentManager fm){
+        this.fm = fm;
+
+        if(dialogHelper != null) {
+            dialogHelper.setFragmentManager(fm);
+        }
     }
 }

@@ -32,4 +32,17 @@
         android:gravity="center_horizontal"
         android:layout_marginBottom="10dp"/>
 
+
+    <TextView
+        android:id="@+id/ok_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/thank_you_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="OK"
+        android:textColor="#DC143C"
+        android:textStyle="bold"/>
+
 </RelativeLayout>
