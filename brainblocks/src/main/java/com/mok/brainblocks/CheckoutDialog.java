@@ -3,6 +3,9 @@ package com.mok.brainblocks;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -51,7 +55,7 @@ public class CheckoutDialog extends DialogFragment{
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
-        String address = getArguments().getString("address");
+        final String address = getArguments().getString("address");
         String amount = getArguments().getString("amount");
         StringBuilder sb = new StringBuilder();
 
@@ -70,6 +74,17 @@ public class CheckoutDialog extends DialogFragment{
         } else {
             QRCodeView.setVisibility(View.GONE);
         }
+
+        QRCodeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboardManager = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText(null, address);
+                clipboardManager.setPrimaryClip(clipData);
+
+                Toast.makeText(getActivity().getApplicationContext(), "Address copied to clipboard.", Toast.LENGTH_LONG).show();
+            }
+        });
 
         DecimalFormat formatter = new DecimalFormat("0");
         formatter.setMaximumFractionDigits(8);
