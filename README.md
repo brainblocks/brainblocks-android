@@ -20,13 +20,24 @@ Brainblock bb = Brainblock.getBrainBlock(this, "<Your XRB Payment Address Here>"
 int amount = 1000;
 
 bb.pay_with_XRB_start(amount);
-
-
 ```
 
-This will automatically generate all the dialogs necessary for directing your client through the payment process.
+You also need to give the FragmentManager of the Activity everytime it resumes, in case that it has changed (ie. because of an orientation change).
 
-Here is what the [flow](https://imgur.com/a/OoETq) looks like. 
+```Java
+@Override
+public void onResume(){
+    super.onResume();
+
+    if(bb != null){
+        bb.setFragmentManager(getFragmentManager());
+    }
+}
+```
+
+This will automatically generate all the dialogs necessary for directing your client through the payment process. 
+
+Here is what the [flow](https://imgur.com/a/720nb) looks like. 
 
 ### Currency to XRB conversion
 
@@ -40,7 +51,6 @@ bb.convertToXRB("cad", "100", new VolleyCallback() {
                 //do something with the result
             }
 });
-
 ```
 
 Supported currencies are: aud, brl, cad, chf, clp, cny, czk, dkk, eur, gbp, hkd, huf, idr, ils, inr, jpy, krw, mxn, myr, nok, nzd, php, pkr, pln, rub, sek, sgd, thb, try, usd, twd, zar.
