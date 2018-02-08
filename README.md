@@ -11,6 +11,7 @@ Be sure to use the latest version. Snapshots may not be stable.
 ## Usage
 
 ### Payment Functionality
+Put this code where you want to start your BrainBlocks session.
 
 ```Java
 
