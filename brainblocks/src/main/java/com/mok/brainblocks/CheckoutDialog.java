@@ -109,14 +109,17 @@ public class CheckoutDialog extends DialogFragment{
 
         final ProgressBar timerProgress = view.findViewById(R.id.timer_progress);
         final TextView timerText = view.findViewById(R.id.timer_text);
+        timerText.setVisibility(View.INVISIBLE);
 
         Runnable r = new Runnable() {
             @Override
             public void run() {
+                timerText.setVisibility(View.VISIBLE);
+
                 int progress = timerProgress.getProgress();
                 timerProgress.setProgress(progress + 1);
 
-                int timeRemaining = 120 - progress - 1;
+                int timeRemaining = 120 - progress ;
 
                 timerText.setText(String.valueOf(timeRemaining) + " seconds remaining");
 
